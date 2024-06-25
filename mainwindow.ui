@@ -605,9 +605,72 @@ background-color:  rgb(118, 118, 118);
     <item row="0" column="2" colspan="2">
      <widget class="QComboBox" name="comboBox">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(76, 76, 76);
-color: rgb(255, 255, 255)</string>
+       <string notr="true">/* Стилизация основного QComboBox */
+QComboBox {
+
+    border-radius: 7px;     /* Закругленные углы */
+         /* Внутренний отступ */
+    background-color: rgb(224, 224, 224); /* Светло-серый фон */
+    color: rgb(0, 0, 0);    /* Черный цвет шрифта */
+}
+
+/* Убираем границу у выпадающей части */
+QComboBox::drop-down {
+    border: 0px;
+}
+
+/* Стилизация выпадающего списка QComboBox */
+QComboBox QAbstractItemView {
+    border: 1px solid #000; /* Черная граница */
+    border-radius: 7px;     /* Закругленные углы */
+    background-color: rgb(224, 224, 224); /* Светло-серый фон */
+    color: rgb(0, 0, 0);    /* Черный цвет шрифта */
+}
+
+/* Стилизация полосы прокрутки внутри QComboBox */
+QComboBox QAbstractItemView QScrollBar:vertical {
+    border: 0px;           /* Без границ */
+    background: rgb(240, 240, 240); /* Фон полосы прокрутки */
+    width: 7px;           /* Ширина полосы прокрутки */
+    margin: 2px 0 2px 0;   /* Отступы сверху и снизу */
+    border-radius: 20px;    /* Закругление углов полосы прокрутки */
+}
+
+/* Стилизация ручки полосы прокрутки (thumb) */
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+    background: rgb(180, 180, 180); /* Цвет ручки */
+    min-height: 20px;               /* Минимальная высота */
+    border-radius: 20px;             /* Закругление углов ручки */
+}
+
+/* Кнопки вверх и вниз на полосе прокрутки */
+QComboBox QAbstractItemView QScrollBar::add-line:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
+    background: rgb(224, 224, 224); /* Фон кнопок */
+    border: 0px;                    /* Без границ */
+    height: 10px;                   /* Высота кнопок */
+    subcontrol-origin: margin;
+    border-radius: 7px;             /* Закругление углов кнопок */
+}
+
+/* Убираем стрелки на кнопках прокрутки */
+QComboBox QAbstractItemView QScrollBar::up-arrow:vertical,
+QComboBox QAbstractItemView QScrollBar::down-arrow:vertical {
+    border: none;
+}
+
+/* Убираем пространство (спэйсеры) вокруг кнопок прокрутки */
+QComboBox QAbstractItemView QScrollBar::add-page:vertical,
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    background: none;
+}
+</string>
       </property>
+      <item>
+       <property name="text">
+        <string>Калькулятор</string>
+       </property>
+      </item>
       <item>
        <property name="text">
         <string>Валюта</string>
@@ -621,11 +684,6 @@ color: rgb(255, 255, 255)</string>
       <item>
        <property name="text">
         <string>Длина</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Калькулятор</string>
        </property>
       </item>
       <item>

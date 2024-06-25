@@ -30,5 +30,6 @@ private slots:
     void math_operations();
     void keyPressEvent(QKeyEvent *event);
 
+    void on_comboBox_activated(int index);
 };
 #endif // MAINWINDOW_H

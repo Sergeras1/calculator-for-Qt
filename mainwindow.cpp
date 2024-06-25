@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QKeyEvent>
+#include "discount.h"
+#include "speedclass.h"
+#include "bmiclass.h"
 
 double num_first;
 
@@ -175,3 +178,27 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         QMainWindow::keyPressEvent(event);
     }
 }
+
+void MainWindow::on_comboBox_activated(int index)
+{
+
+    if(index == 8){
+        hide();
+        discount winDiscount;
+        winDiscount.setModal(true);
+        winDiscount.exec();
+    }
+    else if(index == 9){
+        hide();
+        SpeedClass winSpeed;
+        winSpeed.setModal(true);
+        winSpeed.exec();
+    }
+    else if(index == 4){
+        hide();
+        BmiClass winBmi;
+        winBmi.setModal(true);
+        winBmi.exec();
+    }
+}
+
