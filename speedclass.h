@@ -17,6 +17,8 @@ public:
 
 private slots:
     void on_comboBox_activated(int index);
+    void on_delBtn_clicked();
+    void on_equalsBtn_clicked();
 
 private:
     Ui::SpeedClass *ui;

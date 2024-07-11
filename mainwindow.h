@@ -21,6 +21,8 @@ private:
     Ui::MainWindow *ui;
     double intermediate_result;
     QString last_operator;
+
+
 private slots:
     void digits_numbers();
     void on_commaBtn_clicked();
@@ -29,7 +31,7 @@ private slots:
     void on_equalsBtn_clicked();
     void math_operations();
     void keyPressEvent(QKeyEvent *event);
-
     void on_comboBox_activated(int index);
+
 };
 #endif // MAINWINDOW_H

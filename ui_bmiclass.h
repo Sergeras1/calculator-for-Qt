@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'discount.ui'
+** Form generated from reading UI file 'bmiclass.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_DISCOUNT_H
-#define UI_DISCOUNT_H
+#ifndef UI_BMICLASS_H
+#define UI_BMICLASS_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -19,29 +19,71 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_discount
+class Ui_BmiClass
 {
 public:
-    QComboBox *comboBox;
-    QPushButton *equalsBtn;
-    QLabel *label_1;
     QLabel *label_2;
-    QLabel *label_3;
-    QLineEdit *itinitial_price;
-    QLineEdit *discount_line;
-    QLineEdit *final_price;
+    QLabel *label_1;
+    QLineEdit *weight;
+    QLineEdit *height;
+    QPushButton *equalsBtn;
+    QComboBox *comboBox;
     QPushButton *delBtn;
+    QLabel *label_3;
+    QLabel *label_4;
+    QLabel *resBmi;
 
-    void setupUi(QDialog *discount)
+    void setupUi(QDialog *BmiClass)
     {
-        if (discount->objectName().isEmpty())
-            discount->setObjectName("discount");
-        discount->resize(290, 435);
-        discount->setMinimumSize(QSize(290, 420));
-        discount->setStyleSheet(QString::fromUtf8("border-radius: 7px; \n"
+        if (BmiClass->objectName().isEmpty())
+            BmiClass->setObjectName("BmiClass");
+        BmiClass->resize(290, 435);
+        BmiClass->setStyleSheet(QString::fromUtf8("border-radius: 7px; \n"
 "background-color: rgb(76, 76, 76);\n"
 ""));
-        comboBox = new QComboBox(discount);
+        label_2 = new QLabel(BmiClass);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(40, 160, 71, 41));
+        QFont font;
+        font.setPointSize(10);
+        label_2->setFont(font);
+        label_2->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
+"color: rgb(255, 255, 255)"));
+        label_1 = new QLabel(BmiClass);
+        label_1->setObjectName("label_1");
+        label_1->setGeometry(QRect(40, 120, 61, 41));
+        label_1->setFont(font);
+        label_1->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
+"color: rgb(255, 255, 255)"));
+        weight = new QLineEdit(BmiClass);
+        weight->setObjectName("weight");
+        weight->setGeometry(QRect(170, 130, 71, 28));
+        weight->setFont(font);
+        weight->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);"));
+        height = new QLineEdit(BmiClass);
+        height->setObjectName("height");
+        height->setGeometry(QRect(170, 170, 71, 28));
+        height->setFont(font);
+        height->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);"));
+        equalsBtn = new QPushButton(BmiClass);
+        equalsBtn->setObjectName("equalsBtn");
+        equalsBtn->setGeometry(QRect(150, 350, 135, 80));
+        equalsBtn->setMinimumSize(QSize(0, 0));
+        QFont font1;
+        font1.setPointSize(28);
+        equalsBtn->setFont(font1);
+        equalsBtn->setTabletTracking(false);
+        equalsBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color: rgb(246, 147, 51);\n"
+"color: rgb(255, 255, 255);\n"
+"margin: 3px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color:  rgb(118, 118, 118);\n"
+"}"));
+        comboBox = new QComboBox(BmiClass);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -122,66 +164,12 @@ public:
 "    background: none;\n"
 "}\n"
 ""));
-        equalsBtn = new QPushButton(discount);
-        equalsBtn->setObjectName("equalsBtn");
-        equalsBtn->setGeometry(QRect(150, 350, 135, 80));
-        equalsBtn->setMinimumSize(QSize(0, 0));
-        QFont font;
-        font.setPointSize(28);
-        equalsBtn->setFont(font);
-        equalsBtn->setTabletTracking(false);
-        equalsBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-color: rgb(246, 147, 51);\n"
-"color: rgb(255, 255, 255);\n"
-"margin: 3px;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"background-color:  rgb(118, 118, 118);\n"
-"}"));
-        label_1 = new QLabel(discount);
-        label_1->setObjectName("label_1");
-        label_1->setGeometry(QRect(10, 120, 181, 41));
-        QFont font1;
-        font1.setPointSize(10);
-        label_1->setFont(font1);
-        label_1->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
-"color: rgb(255, 255, 255)"));
-        label_2 = new QLabel(discount);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(10, 160, 91, 41));
-        label_2->setFont(font1);
-        label_2->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
-"color: rgb(255, 255, 255)"));
-        label_3 = new QLabel(discount);
-        label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(10, 200, 181, 41));
-        label_3->setFont(font1);
-        label_3->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
-"color: rgb(255, 255, 255)"));
-        itinitial_price = new QLineEdit(discount);
-        itinitial_price->setObjectName("itinitial_price");
-        itinitial_price->setGeometry(QRect(200, 130, 71, 28));
-        itinitial_price->setFont(font1);
-        itinitial_price->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
-        discount_line = new QLineEdit(discount);
-        discount_line->setObjectName("discount_line");
-        discount_line->setGeometry(QRect(200, 170, 71, 28));
-        discount_line->setFont(font1);
-        discount_line->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
-        final_price = new QLineEdit(discount);
-        final_price->setObjectName("final_price");
-        final_price->setGeometry(QRect(200, 210, 71, 28));
-        final_price->setFont(font1);
-        final_price->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
-        delBtn = new QPushButton(discount);
+        delBtn = new QPushButton(BmiClass);
         delBtn->setObjectName("delBtn");
         delBtn->setGeometry(QRect(10, 349, 135, 80));
         delBtn->setMinimumSize(QSize(0, 0));
         delBtn->setMaximumSize(QSize(16777215, 16777215));
-        delBtn->setFont(font);
+        delBtn->setFont(font1);
         delBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(224, 224, 224);\n"
 "color: rgb(0, 0, 0);\n"
@@ -190,41 +178,59 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
+        label_3 = new QLabel(BmiClass);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(40, 200, 51, 41));
+        label_3->setFont(font);
+        label_3->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
+"color: rgb(255, 255, 255)"));
+        label_4 = new QLabel(BmiClass);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(30, 270, 231, 31));
+        label_4->setFont(font);
+        label_4->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
+"color: rgb(255, 255, 255)"));
+        resBmi = new QLabel(BmiClass);
+        resBmi->setObjectName("resBmi");
+        resBmi->setGeometry(QRect(180, 210, 61, 21));
+        resBmi->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255)"));
 
-        retranslateUi(discount);
+        retranslateUi(BmiClass);
 
-        QMetaObject::connectSlotsByName(discount);
+        QMetaObject::connectSlotsByName(BmiClass);
     } // setupUi
 
-    void retranslateUi(QDialog *discount)
+    void retranslateUi(QDialog *BmiClass)
     {
-        discount->setWindowTitle(QCoreApplication::translate("discount", "Dialog", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("discount", "\320\241\320\272\320\270\320\264\320\272\320\260", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("discount", "\320\232\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("discount", "\320\222\320\260\320\273\321\216\321\202\320\260", nullptr));
-        comboBox->setItemText(3, QCoreApplication::translate("discount", "\320\224\320\260\320\275\320\275\321\213\320\265", nullptr));
-        comboBox->setItemText(4, QCoreApplication::translate("discount", "\320\224\320\273\320\270\320\275\320\260", nullptr));
-        comboBox->setItemText(5, QCoreApplication::translate("discount", "\320\230\320\234\320\242", nullptr));
-        comboBox->setItemText(6, QCoreApplication::translate("discount", "\320\234\320\260\321\201\321\201\320\260", nullptr));
-        comboBox->setItemText(7, QCoreApplication::translate("discount", "\320\236\320\261\321\212\320\265\320\274", nullptr));
-        comboBox->setItemText(8, QCoreApplication::translate("discount", "\320\237\320\273\320\276\321\211\320\260\320\264\321\214", nullptr));
-        comboBox->setItemText(9, QCoreApplication::translate("discount", "\320\241\320\272\320\276\321\200\320\276\321\201\321\202\321\214", nullptr));
-        comboBox->setItemText(10, QCoreApplication::translate("discount", "\320\242\320\265\320\274\320\277\320\265\321\200\320\260\321\202\321\203\321\200\320\260", nullptr));
-        comboBox->setItemText(11, QCoreApplication::translate("discount", "\320\244\320\270\320\275\320\260\320\275\321\201\321\213", nullptr));
+        BmiClass->setWindowTitle(QCoreApplication::translate("BmiClass", "Dialog", nullptr));
+        label_2->setText(QCoreApplication::translate("BmiClass", "\320\240\320\276\321\201\321\202, \321\201\320\274", nullptr));
+        label_1->setText(QCoreApplication::translate("BmiClass", "\320\222\320\265\321\201, \320\272\320\263", nullptr));
+        equalsBtn->setText(QCoreApplication::translate("BmiClass", "=", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("BmiClass", "\320\230\320\234\320\242", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("BmiClass", "\320\241\320\272\320\270\320\264\320\272\320\260", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("BmiClass", "\320\232\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("BmiClass", "\320\222\320\260\320\273\321\216\321\202\320\260", nullptr));
+        comboBox->setItemText(4, QCoreApplication::translate("BmiClass", "\320\224\320\260\320\275\320\275\321\213\320\265", nullptr));
+        comboBox->setItemText(5, QCoreApplication::translate("BmiClass", "\320\224\320\273\320\270\320\275\320\260", nullptr));
+        comboBox->setItemText(6, QCoreApplication::translate("BmiClass", "\320\234\320\260\321\201\321\201\320\260", nullptr));
+        comboBox->setItemText(7, QCoreApplication::translate("BmiClass", "\320\236\320\261\321\212\320\265\320\274", nullptr));
+        comboBox->setItemText(8, QCoreApplication::translate("BmiClass", "\320\237\320\273\320\276\321\211\320\260\320\264\321\214", nullptr));
+        comboBox->setItemText(9, QCoreApplication::translate("BmiClass", "\320\241\320\272\320\276\321\200\320\276\321\201\321\202\321\214", nullptr));
+        comboBox->setItemText(10, QCoreApplication::translate("BmiClass", "\320\242\320\265\320\274\320\277\320\265\321\200\320\260\321\202\321\203\321\200\320\260", nullptr));
+        comboBox->setItemText(11, QCoreApplication::translate("BmiClass", "\320\244\320\270\320\275\320\260\320\275\321\201\321\213", nullptr));
 
-        equalsBtn->setText(QCoreApplication::translate("discount", "=", nullptr));
-        label_1->setText(QCoreApplication::translate("discount", "\320\237\320\265\321\200\320\262\320\276\320\275\320\260\321\207\320\260\320\273\321\214\320\275\320\260\321\217 \321\206\320\265\320\275\320\260", nullptr));
-        label_2->setText(QCoreApplication::translate("discount", "\320\241\320\272\320\270\320\264\320\272\320\260 (%)", nullptr));
-        label_3->setText(QCoreApplication::translate("discount", "\320\236\320\272\320\276\320\275\321\207\320\260\321\202\320\265\320\273\321\214\320\275\320\260\321\217 \321\206\320\265\320\275\320\260", nullptr));
-        delBtn->setText(QCoreApplication::translate("discount", "AC", nullptr));
+        delBtn->setText(QCoreApplication::translate("BmiClass", "AC", nullptr));
+        label_3->setText(QCoreApplication::translate("BmiClass", "\320\230\320\234\320\242", nullptr));
+        label_4->setText(QString());
+        resBmi->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class discount: public Ui_discount {};
+    class BmiClass: public Ui_BmiClass {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_DISCOUNT_H
+#endif // UI_BMICLASS_H

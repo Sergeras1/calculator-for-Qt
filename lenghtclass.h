@@ -1,19 +1,19 @@
-#ifndef BMICLASS_H
-#define BMICLASS_H
+#ifndef LENGHTCLASS_H
+#define LENGHTCLASS_H
 
 #include <QDialog>
 
 namespace Ui {
-class BmiClass;
+class LenghtClass;
 }
 
-class BmiClass : public QDialog
+class LenghtClass : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit BmiClass(QWidget *parent = nullptr);
-    ~BmiClass();
+    explicit LenghtClass(QWidget *parent = nullptr);
+    ~LenghtClass();
 
 private slots:
     void on_comboBox_activated(int index);
@@ -21,9 +21,9 @@ private slots:
     void on_equalsBtn_clicked();
     void keyPressEvent(QKeyEvent *event);
 
-private:
-    Ui::BmiClass *ui;
 
+private:
+    Ui::LenghtClass *ui;
 };
 
-#endif // BMICLASS_H
+#endif // LENGHTCLASS_H

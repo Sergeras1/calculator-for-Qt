@@ -4,6 +4,8 @@
 #include "discount.h"
 #include "speedclass.h"
 #include "bmiclass.h"
+#include "lenghtclass.h"
+#include "dataclass.h"
 
 double num_first;
 
@@ -85,6 +87,7 @@ void MainWindow::math_operations() {
 
     num_first = ui->result->text().toDouble();
     ui->result->setText("");
+
     button->setChecked(true);
 }
 
@@ -167,10 +170,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         ui->divisBtn->click();
     }
 
-    else if (key == Qt::Key_Backspace) {
+    else if (key == Qt::Key_Backspace || key == Qt::Key_Delete) {
         on_delBtn_clicked();
     }
-    else if(key == Qt::Key_Period){
+    else if(key == Qt::Key_Period || key == Qt::Key_Comma){
         on_commaBtn_clicked();
     }
     else {
@@ -199,6 +202,18 @@ void MainWindow::on_comboBox_activated(int index)
         BmiClass winBmi;
         winBmi.setModal(true);
         winBmi.exec();
+    }
+    else if(index == 3){
+        hide();
+        LenghtClass winLenght;
+        winLenght.setModal(true);
+        winLenght.exec();
+    }
+    else if(index == 2){
+        hide();
+        DataClass winData;
+        winData.setModal(true);
+        winData.exec();
     }
 }
 

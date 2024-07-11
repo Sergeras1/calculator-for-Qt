@@ -3,6 +3,9 @@
 #include "mainwindow.h"
 #include <QKeyEvent>
 #include "speedclass.h"
+#include "bmiclass.h"
+#include "lenghtclass.h"
+#include "dataclass.h"
 
 discount::discount(QWidget *parent)
     : QDialog(parent)
@@ -22,14 +25,32 @@ void discount::on_comboBox_activated(int index)
 {
     if(index == 1){
         hide();
-        MainWindow *winCalculate = new MainWindow;
+        MainWindow *winCalculate = new MainWindow(this);
         winCalculate->show();
     }
     else if(index == 9){
         hide();
-        SpeedClass winSpeed;
+        SpeedClass winSpeed(this);
         winSpeed.setModal(true);
         winSpeed.exec();
+    }
+    else if(index == 5){
+        hide();
+        BmiClass winBmi(this);
+        winBmi.setModal(true);
+        winBmi.exec();
+    }
+    else if(index == 4){
+        hide();
+        LenghtClass winLenght(this);
+        winLenght.setModal(true);
+        winLenght.exec();
+    }
+    else if(index == 3){
+        hide();
+        DataClass winData(this);
+        winData.setModal(true);
+        winData.exec();
     }
 }
 

@@ -3,12 +3,16 @@
 #include "mainwindow.h"
 #include "speedclass.h"
 #include "discount.h"
+#include "lenghtclass.h"
+#include "dataclass.h"
+#include <QKeyEvent>
 
 BmiClass::BmiClass(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::BmiClass)
 {
     ui->setupUi(this);
+
 }
 
 BmiClass::~BmiClass()
@@ -26,20 +30,32 @@ double roundToTenths(double num){
 void BmiClass::on_comboBox_activated(int index) {
     if(index == 2){
         hide();
-        MainWindow *winCalculate = new MainWindow;
+        MainWindow *winCalculate = new MainWindow(this);
         winCalculate->show();
     }
     else if(index == 9){
         hide();
-        SpeedClass winSpeed;
+        SpeedClass winSpeed(this);
         winSpeed.setModal(true);
         winSpeed.exec();
     }
     else if(index == 1){
         hide();
-        discount winDiscount;
+        discount winDiscount(this);
         winDiscount.setModal(true);
         winDiscount.exec();
+    }
+    else if(index == 5){
+        hide();
+        LenghtClass winLenght(this);
+        winLenght.setModal(true);
+        winLenght.exec();
+    }
+    else if(index == 4){
+        hide();
+        DataClass winData(this);
+        winData.setModal(true);
+        winData.exec();
     }
 }
 
@@ -84,4 +100,21 @@ void BmiClass::on_delBtn_clicked(){
     ui->resBmi->setText("");
     ui->label_4->setText("");
 
+}
+
+void BmiClass::keyPressEvent(QKeyEvent *event) {
+    int key = event->key();
+
+
+    if (key == Qt::Key_Return || key == Qt::Key_Enter || key == Qt::Key_Equal) {
+        on_equalsBtn_clicked();
+    }
+
+    else if (key == Qt::Key_Backspace) {
+        on_delBtn_clicked();
+    }
+    else {
+
+        BmiClass::keyPressEvent(event);
+    }
 }

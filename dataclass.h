@@ -1,19 +1,19 @@
-#ifndef BMICLASS_H
-#define BMICLASS_H
+#ifndef DATACLASS_H
+#define DATACLASS_H
 
 #include <QDialog>
 
 namespace Ui {
-class BmiClass;
+class DataClass;
 }
 
-class BmiClass : public QDialog
+class DataClass : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit BmiClass(QWidget *parent = nullptr);
-    ~BmiClass();
+    explicit DataClass(QWidget *parent = nullptr);
+    ~DataClass();
 
 private slots:
     void on_comboBox_activated(int index);
@@ -22,8 +22,7 @@ private slots:
     void keyPressEvent(QKeyEvent *event);
 
 private:
-    Ui::BmiClass *ui;
-
+    Ui::DataClass *ui;
 };
 
-#endif // BMICLASS_H
+#endif // DATACLASS_H
