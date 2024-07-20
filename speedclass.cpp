@@ -1,20 +1,14 @@
 #include "speedclass.h"
 #include "ui_speedclass.h"
 #include "mainwindow.h"
-#include "discount.h"
-#include "bmiclass.h"
-#include "lenghtclass.h"
-#include "dataclass.h"
-
+#include "discountclass.h"
+#include "QKeyEvent"
 
 SpeedClass::SpeedClass(QWidget *parent)
-    : QDialog(parent)
+    : QWidget(parent)
     , ui(new Ui::SpeedClass)
 {
     ui->setupUi(this);
-
-    ui->speedComboBox_1->setCurrentIndex(0);
-    ui->speedComboBox_2->setCurrentIndex(0);
 }
 
 SpeedClass::~SpeedClass()
@@ -23,36 +17,43 @@ SpeedClass::~SpeedClass()
 }
 
 void SpeedClass::on_comboBox_activated(int index) {
-
-    if(index == 2){
-        hide();
-        MainWindow *winCalculate = new MainWindow(this);
-        winCalculate->show();
+    switch(index){
+    case 1:
+    {
+        discountWidget = new DiscountClass();
+        discountWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 1){
+    case 2:
+    {
         hide();
-        discount winDiscount(this);
-        winDiscount.setModal(true);
-        winDiscount.exec();
+        MainWindow *WinCalculate = new MainWindow();
+        WinCalculate->show();
+        break;
     }
-    else if(index == 6){
-        hide();
-        BmiClass winBmi(this);
-        winBmi.setModal(true);
-        winBmi.exec();
+    case 4:
+    {
+        dataWidget = new DataClass();
+        dataWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 1){
-        hide();
-        LenghtClass winLenght(this);
-        winLenght.setModal(true);
-        winLenght.exec();
+    case 5:
+    {
+        lenghtWidget = new LenghtClass();
+        lenghtWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 5){
-        hide();
-        DataClass winData(this);
-        winData.setModal(true);
-        winData.exec();
+    case 6:
+    {
+        bmiWidget = new BmiClass();
+        bmiWidget->show();
+        this->close();
+        break;
     }
+  }
 }
 
 void SpeedClass::on_equalsBtn_clicked() {
@@ -91,5 +92,15 @@ void SpeedClass::on_delBtn_clicked(){
     ui->answerSpeed->setText("");
 }
 
+void SpeedClass::keyPressEvent(QKeyEvent *event) {
+    int key = event->key();
 
+    if (key == Qt::Key_Return || key == Qt::Key_Enter || key == Qt::Key_Equal) {
+        on_equalsBtn_clicked();
+    } else if (key == Qt::Key_Backspace) {
+        on_delBtn_clicked();
+    } else {
+        QWidget::keyPressEvent(event);
+    }
+}
 

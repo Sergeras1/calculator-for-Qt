@@ -1,18 +1,17 @@
 #include "lenghtclass.h"
 #include "ui_lenghtclass.h"
-#include "bmiclass.h"
-#include "mainwindow.h"
-#include "speedclass.h"
-#include "discount.h"
 #include "dataclass.h"
-#include <QKeyEvent>
+#include "QKeyEvent"
+#include "mainwindow.h"
+#include "bmiclass.h"
+#include "discountclass.h"
+#include "speedclass.h"
 
 LenghtClass::LenghtClass(QWidget *parent)
-    : QDialog(parent)
+    : QWidget(parent)
     , ui(new Ui::LenghtClass)
 {
     ui->setupUi(this);
-
     ui->lenghtComboBox_1->setCurrentIndex(0);
     ui->lenghtComboBox_2->setCurrentIndex(0);
 }
@@ -23,51 +22,43 @@ LenghtClass::~LenghtClass()
 }
 
 void LenghtClass::on_comboBox_activated(int index) {
-
-    this->hide(); // Скрываем текущее окно
-    switch(index) {
-    case 1: {
-        SpeedClass *winSpeed = new SpeedClass(this);  // Создаем с указанием родителя
-        winSpeed->setModal(true);
-        winSpeed->show();
-        connect(winSpeed, &SpeedClass::finished, this, &LenghtClass::show); // Показать текущее окно после закрытия
-        break;
-    }
-    case 2: {
-
-        discount *winDiscount = new discount(this);  // Создаем с указанием родителя
-        winDiscount->setModal(true);
-        winDiscount->show();
-        connect(winDiscount, &discount::finished, this, &LenghtClass::show);
-        break;
-    }
-    case 3: {
-        MainWindow *winCalculate = new MainWindow(this);  // Создаем с указанием родителя
+    switch(index){
+    case 3:
+    {
+        hide();
+        MainWindow *winCalculate = new MainWindow(this);
         winCalculate->show();
-        connect(winCalculate, &MainWindow::destroyed, this, &LenghtClass::show); // Показать текущее окно после закрытия
-        winCalculate->hide();
         break;
     }
-    case 4: {
-        hide(); // Скрываем текущее окно
-        BmiClass *winBmi = new BmiClass(this);  // Создаем с указанием родителя
-        winBmi->setModal(true);
-        winBmi->show();
-        connect(winBmi, &BmiClass::finished, this, &LenghtClass::show);
+    case 5:
+    {
+        dataWidget = new DataClass();
+        dataWidget->show();
+        this->close();
         break;
     }
-    case 5: {
-        DataClass *winData = new DataClass(this);  // Создаем с указанием родителя
-        winData->setModal(true);
-        winData->show();
-        connect(winData, &DataClass::finished, this, &LenghtClass::show);
+    case 6:
+    {
+        bmiWidget = new BmiClass();
+        bmiWidget->show();
+        this->close();
         break;
     }
-    default: {
-        this->show(); // Показываем текущее окно, если индекс не совпадает
+    case 2:
+    {
+        discountWidget = new DiscountClass();
+        discountWidget->show();
+        this->close();
         break;
     }
+    case 1:
+    {
+        speedWidget = new SpeedClass();
+        speedWidget->show();
+        this->close();
+        break;
     }
+  }
 }
 
 void LenghtClass::on_equalsBtn_clicked() {
@@ -119,6 +110,6 @@ void LenghtClass::keyPressEvent(QKeyEvent *event) {
     } else if (key == Qt::Key_Backspace) {
         on_delBtn_clicked();
     } else {
-        QDialog::keyPressEvent(event);
+        QWidget::keyPressEvent(event);
     }
 }

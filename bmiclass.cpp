@@ -1,20 +1,18 @@
 #include "bmiclass.h"
 #include "ui_bmiclass.h"
+#include "QKeyEvent"
 #include "mainwindow.h"
-#include "speedclass.h"
-#include "discount.h"
-#include "lenghtclass.h"
 #include "dataclass.h"
-#include <QKeyEvent>
+#include "lenghtclass.h"
+#include "discountclass.h"
+#include "speedclass.h"
 
 BmiClass::BmiClass(QWidget *parent)
-    : QDialog(parent)
+    : QWidget(parent)
     , ui(new Ui::BmiClass)
 {
     ui->setupUi(this);
-
 }
-
 BmiClass::~BmiClass()
 {
     delete ui;
@@ -27,36 +25,47 @@ double roundToTenths(double num){
 
     return static_cast<double>(roundNum) / 10.0;
 }
+
 void BmiClass::on_comboBox_activated(int index) {
-    if(index == 2){
+    switch(index){
+    case 2:
+    {
         hide();
         MainWindow *winCalculate = new MainWindow(this);
         winCalculate->show();
+        break;
     }
-    else if(index == 9){
-        hide();
-        SpeedClass winSpeed(this);
-        winSpeed.setModal(true);
-        winSpeed.exec();
+
+    case 4:
+    {
+        dataWidget = new DataClass();
+        dataWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 1){
-        hide();
-        discount winDiscount(this);
-        winDiscount.setModal(true);
-        winDiscount.exec();
+    case 5:
+    {
+        lenghtWidget = new LenghtClass();
+        lenghtWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 5){
-        hide();
-        LenghtClass winLenght(this);
-        winLenght.setModal(true);
-        winLenght.exec();
+    case 1:
+    {
+        discountWidget = new DiscountClass();
+        discountWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 4){
-        hide();
-        DataClass winData(this);
-        winData.setModal(true);
-        winData.exec();
+    case 9:
+    {
+        speedWidget = new SpeedClass();
+        speedWidget->show();
+        this->close();
+        break;
+
     }
+   }
 }
 
 void BmiClass::on_equalsBtn_clicked(){

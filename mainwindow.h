@@ -3,6 +3,12 @@
 
 #include <QMainWindow>
 
+class DataClass;
+class LenghtClass;
+class BmiClass;
+class DiscountClass;
+class SpeedClass;
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -22,6 +28,11 @@ private:
     double intermediate_result;
     QString last_operator;
 
+    DataClass *dataWidget;
+    LenghtClass *lenghtWidget;
+    BmiClass *bmiWidget;
+    DiscountClass *discountWidget;
+    SpeedClass *speedWidget;
 
 private slots:
     void digits_numbers();

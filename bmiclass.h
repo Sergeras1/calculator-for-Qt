@@ -1,13 +1,18 @@
 #ifndef BMICLASS_H
 #define BMICLASS_H
 
-#include <QDialog>
+#include <QWidget>
+
+class LenghtClass;
+class DiscountClass;
+class DataClass;
+class SpeedClass;
 
 namespace Ui {
 class BmiClass;
 }
 
-class BmiClass : public QDialog
+class BmiClass : public QWidget
 {
     Q_OBJECT
 
@@ -23,7 +28,10 @@ private slots:
 
 private:
     Ui::BmiClass *ui;
-
+    LenghtClass *lenghtWidget;
+    DataClass *dataWidget;
+    DiscountClass *discountWidget;
+    SpeedClass *speedWidget;
 };
 
 #endif // BMICLASS_H

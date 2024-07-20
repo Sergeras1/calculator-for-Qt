@@ -12,24 +12,24 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDialog>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_SpeedClass
 {
 public:
-    QComboBox *comboBox;
-    QPushButton *equalsBtn;
+    QLineEdit *enterSpeed;
     QLineEdit *answerSpeed;
     QPushButton *delBtn;
-    QLineEdit *enterSpeed;
+    QComboBox *comboBox;
     QComboBox *speedComboBox_1;
+    QPushButton *equalsBtn;
     QComboBox *speedComboBox_2;
 
-    void setupUi(QDialog *SpeedClass)
+    void setupUi(QWidget *SpeedClass)
     {
         if (SpeedClass->objectName().isEmpty())
             SpeedClass->setObjectName("SpeedClass");
@@ -37,6 +37,36 @@ public:
         SpeedClass->setStyleSheet(QString::fromUtf8("border-radius: 7px; \n"
 "background-color: rgb(76, 76, 76);\n"
 ""));
+        enterSpeed = new QLineEdit(SpeedClass);
+        enterSpeed->setObjectName("enterSpeed");
+        enterSpeed->setGeometry(QRect(160, 130, 91, 28));
+        QFont font;
+        font.setPointSize(10);
+        enterSpeed->setFont(font);
+        enterSpeed->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);"));
+        answerSpeed = new QLineEdit(SpeedClass);
+        answerSpeed->setObjectName("answerSpeed");
+        answerSpeed->setGeometry(QRect(160, 220, 91, 28));
+        answerSpeed->setFont(font);
+        answerSpeed->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);"));
+        delBtn = new QPushButton(SpeedClass);
+        delBtn->setObjectName("delBtn");
+        delBtn->setGeometry(QRect(10, 349, 135, 80));
+        delBtn->setMinimumSize(QSize(0, 0));
+        delBtn->setMaximumSize(QSize(16777215, 16777215));
+        QFont font1;
+        font1.setPointSize(28);
+        delBtn->setFont(font1);
+        delBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);\n"
+"margin: 3px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color:  rgb(118, 118, 118);\n"
+"}"));
         comboBox = new QComboBox(SpeedClass);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -118,50 +148,6 @@ public:
 "    background: none;\n"
 "}\n"
 ""));
-        equalsBtn = new QPushButton(SpeedClass);
-        equalsBtn->setObjectName("equalsBtn");
-        equalsBtn->setGeometry(QRect(150, 350, 135, 80));
-        equalsBtn->setMinimumSize(QSize(0, 0));
-        QFont font;
-        font.setPointSize(28);
-        equalsBtn->setFont(font);
-        equalsBtn->setTabletTracking(false);
-        equalsBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-color: rgb(246, 147, 51);\n"
-"color: rgb(255, 255, 255);\n"
-"margin: 3px;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"background-color:  rgb(118, 118, 118);\n"
-"}"));
-        answerSpeed = new QLineEdit(SpeedClass);
-        answerSpeed->setObjectName("answerSpeed");
-        answerSpeed->setGeometry(QRect(160, 220, 91, 28));
-        QFont font1;
-        font1.setPointSize(10);
-        answerSpeed->setFont(font1);
-        answerSpeed->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
-        delBtn = new QPushButton(SpeedClass);
-        delBtn->setObjectName("delBtn");
-        delBtn->setGeometry(QRect(10, 349, 135, 80));
-        delBtn->setMinimumSize(QSize(0, 0));
-        delBtn->setMaximumSize(QSize(16777215, 16777215));
-        delBtn->setFont(font);
-        delBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);\n"
-"margin: 3px;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"background-color:  rgb(118, 118, 118);\n"
-"}"));
-        enterSpeed = new QLineEdit(SpeedClass);
-        enterSpeed->setObjectName("enterSpeed");
-        enterSpeed->setGeometry(QRect(160, 130, 91, 28));
-        enterSpeed->setFont(font1);
-        enterSpeed->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
         speedComboBox_1 = new QComboBox(SpeedClass);
         speedComboBox_1->addItem(QString());
         speedComboBox_1->addItem(QString());
@@ -234,6 +220,20 @@ public:
 "    background: none;\n"
 "}\n"
 ""));
+        equalsBtn = new QPushButton(SpeedClass);
+        equalsBtn->setObjectName("equalsBtn");
+        equalsBtn->setGeometry(QRect(150, 350, 135, 80));
+        equalsBtn->setMinimumSize(QSize(0, 0));
+        equalsBtn->setFont(font1);
+        equalsBtn->setTabletTracking(false);
+        equalsBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color: rgb(246, 147, 51);\n"
+"color: rgb(255, 255, 255);\n"
+"margin: 3px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color:  rgb(118, 118, 118);\n"
+"}"));
         speedComboBox_2 = new QComboBox(SpeedClass);
         speedComboBox_2->addItem(QString());
         speedComboBox_2->addItem(QString());
@@ -312,9 +312,10 @@ public:
         QMetaObject::connectSlotsByName(SpeedClass);
     } // setupUi
 
-    void retranslateUi(QDialog *SpeedClass)
+    void retranslateUi(QWidget *SpeedClass)
     {
-        SpeedClass->setWindowTitle(QCoreApplication::translate("SpeedClass", "Dialog", nullptr));
+        SpeedClass->setWindowTitle(QCoreApplication::translate("SpeedClass", "Form", nullptr));
+        delBtn->setText(QCoreApplication::translate("SpeedClass", "AC", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("SpeedClass", "\320\241\320\272\320\276\321\200\320\276\321\201\321\202\321\214", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("SpeedClass", "\320\241\320\272\320\270\320\264\320\272\320\260", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("SpeedClass", "\320\232\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200", nullptr));
@@ -328,12 +329,11 @@ public:
         comboBox->setItemText(10, QCoreApplication::translate("SpeedClass", "\320\242\320\265\320\274\320\277\320\265\321\200\320\260\321\202\321\203\321\200\320\260", nullptr));
         comboBox->setItemText(11, QCoreApplication::translate("SpeedClass", "\320\244\320\270\320\275\320\260\320\275\321\201\321\213", nullptr));
 
-        equalsBtn->setText(QCoreApplication::translate("SpeedClass", "=", nullptr));
-        delBtn->setText(QCoreApplication::translate("SpeedClass", "AC", nullptr));
         speedComboBox_1->setItemText(0, QCoreApplication::translate("SpeedClass", "\320\272\320\274/\321\207", nullptr));
         speedComboBox_1->setItemText(1, QCoreApplication::translate("SpeedClass", "\320\274/\321\201", nullptr));
         speedComboBox_1->setItemText(2, QCoreApplication::translate("SpeedClass", "\320\272\320\274/\321\201", nullptr));
 
+        equalsBtn->setText(QCoreApplication::translate("SpeedClass", "=", nullptr));
         speedComboBox_2->setItemText(0, QCoreApplication::translate("SpeedClass", "\320\272\320\274/\321\207", nullptr));
         speedComboBox_2->setItemText(1, QCoreApplication::translate("SpeedClass", "\320\274/\321\201", nullptr));
         speedComboBox_2->setItemText(2, QCoreApplication::translate("SpeedClass", "\320\272\320\274/\321\201", nullptr));

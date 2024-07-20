@@ -1,14 +1,14 @@
 #include "dataclass.h"
 #include "ui_dataclass.h"
-#include "bmiclass.h"
+#include "QKeyEvent"
 #include "mainwindow.h"
-#include "speedclass.h"
-#include "discount.h"
 #include "lenghtclass.h"
-#include <QKeyEvent>
+#include "bmiclass.h"
+#include "discountclass.h"
+#include "speedclass.h"
 
 DataClass::DataClass(QWidget *parent)
-    : QDialog(parent)
+    : QWidget(parent)
     , ui(new Ui::DataClass)
 {
     ui->setupUi(this);
@@ -21,37 +21,44 @@ DataClass::~DataClass()
 {
     delete ui;
 }
-
 void DataClass::on_comboBox_activated(int index) {
-    if(index == 4){
+    switch(index){
+    case 1:
+    {
+        lenghtWidget = new LenghtClass();
+        lenghtWidget->show();
+        this->close();
+        break;
+    }
+    case 4:
+    {
         hide();
         MainWindow *winCalculate = new MainWindow(this);
         winCalculate->show();
+        break;
     }
-    else if(index == 2){
-        hide();
-        SpeedClass winSpeed(this);
-        winSpeed.setModal(true);
-        winSpeed.exec();
+    case 6:
+    {
+        bmiWidget = new BmiClass();
+        bmiWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 3){
-        hide();
-        discount winDiscount(this);
-        winDiscount.setModal(true);
-        winDiscount.exec();
+    case 3:
+    {
+        discountWidget = new DiscountClass();
+        discountWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 1){
-        hide();
-        LenghtClass winLenght(this);
-        winLenght.setModal(true);
-        winLenght.exec();
+    case 2:
+    {
+        speedWidget = new SpeedClass();
+        speedWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 6){
-        hide();
-        BmiClass winBmi(this);
-        winBmi.setModal(true);
-        winBmi.exec();
-    }
+  }
 }
 
 void DataClass::on_equalsBtn_clicked(){
@@ -165,7 +172,7 @@ void DataClass::keyPressEvent(QKeyEvent *event) {
         on_equalsBtn_clicked();
     }
 
-    else if (key == Qt::Key_Backspace) {
+    else if (key == Qt::Key_Backspace || key == Qt::Key_Delete) {
         on_delBtn_clicked();
     }
     else {
@@ -173,3 +180,5 @@ void DataClass::keyPressEvent(QKeyEvent *event) {
         DataClass::keyPressEvent(event);
     }
 }
+
+

@@ -1,36 +1,36 @@
-#ifndef LENGHTCLASS_H
-#define LENGHTCLASS_H
+#ifndef DISCOUNTCLASS_H
+#define DISCOUNTCLASS_H
 
 #include <QWidget>
 
 class DataClass;
+class LenghtClass;
 class BmiClass;
-class DiscountClass;
 class SpeedClass;
 
 namespace Ui {
-class LenghtClass;
+class DiscountClass;
 }
 
-class LenghtClass : public QWidget
+class DiscountClass : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit LenghtClass(QWidget *parent = nullptr);
-    ~LenghtClass();
+    explicit DiscountClass(QWidget *parent = nullptr);
+    ~DiscountClass();
+
 private slots:
     void on_comboBox_activated(int index);
     void on_delBtn_clicked();
     void on_equalsBtn_clicked();
     void keyPressEvent(QKeyEvent *event);
-
 private:
-    Ui::LenghtClass *ui;
+    Ui::DiscountClass *ui;
+    LenghtClass *lenghtWidget;
     DataClass *dataWidget;
     BmiClass *bmiWidget;
-    DiscountClass *discountWidget;
     SpeedClass *speedWidget;
 };
 
-#endif // LENGHTCLASS_H
+#endif // DISCOUNTCLASS_H

@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QKeyEvent>
-#include "discount.h"
-#include "speedclass.h"
 #include "bmiclass.h"
-#include "lenghtclass.h"
 #include "dataclass.h"
+#include "lenghtclass.h"
+#include "discountclass.h"
+#include "speedclass.h"
 
 double num_first;
 
@@ -182,38 +182,45 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
     }
 }
 
-void MainWindow::on_comboBox_activated(int index)
-{
+void MainWindow::on_comboBox_activated(int index) {
+    switch(index){
+    case 2:
+    {
+        dataWidget = new DataClass();
+        dataWidget->show();
+        this->close();
+        break;
+    }
 
-    if(index == 8){
-        hide();
-        discount winDiscount;
-        winDiscount.setModal(true);
-        winDiscount.exec();
+    case 3:
+    {
+        lenghtWidget = new LenghtClass();
+        lenghtWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 9){
-        hide();
-        SpeedClass winSpeed;
-        winSpeed.setModal(true);
-        winSpeed.exec();
+    case 4:
+    {
+        bmiWidget = new BmiClass();
+        bmiWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 4){
-        hide();
-        BmiClass winBmi;
-        winBmi.setModal(true);
-        winBmi.exec();
+    case 8:
+    {
+        discountWidget = new DiscountClass();
+        discountWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 3){
-        hide();
-        LenghtClass winLenght;
-        winLenght.setModal(true);
-        winLenght.exec();
+    case 9:
+    {
+        speedWidget = new SpeedClass();
+        speedWidget->show();
+        this->close();
+        break;
     }
-    else if(index == 2){
-        hide();
-        DataClass winData;
-        winData.setModal(true);
-        winData.exec();
-    }
+  }
+
 }
 

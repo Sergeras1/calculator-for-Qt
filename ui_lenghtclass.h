@@ -12,112 +12,60 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDialog>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_LenghtClass
 {
 public:
-    QComboBox *lenghtComboBox_1;
+    QLineEdit *answerLenght;
+    QPushButton *equalsBtn;
     QPushButton *delBtn;
+    QLineEdit *enterLenght;
     QComboBox *comboBox;
     QComboBox *lenghtComboBox_2;
-    QPushButton *equalsBtn;
-    QLineEdit *enterLenght;
-    QLineEdit *answerLenght;
+    QComboBox *lenghtComboBox_1;
 
-    void setupUi(QDialog *LenghtClass)
+    void setupUi(QWidget *LenghtClass)
     {
         if (LenghtClass->objectName().isEmpty())
             LenghtClass->setObjectName("LenghtClass");
         LenghtClass->resize(290, 435);
         LenghtClass->setStyleSheet(QString::fromUtf8("border-radius: 7px; \n"
-"background-color: rgb(76, 76, 76);\n"
-""));
-        lenghtComboBox_1 = new QComboBox(LenghtClass);
-        lenghtComboBox_1->addItem(QString());
-        lenghtComboBox_1->addItem(QString());
-        lenghtComboBox_1->addItem(QString());
-        lenghtComboBox_1->addItem(QString());
-        lenghtComboBox_1->setObjectName("lenghtComboBox_1");
-        lenghtComboBox_1->setGeometry(QRect(40, 130, 81, 28));
-        lenghtComboBox_1->setStyleSheet(QString::fromUtf8("/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\276\321\201\320\275\320\276\320\262\320\275\320\276\320\263\320\276 QComboBox */\n"
-"QComboBox {\n"
-"\n"
-"    border-radius: 7px;     /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\213\320\265 \321\203\320\263\320\273\321\213 */\n"
-"         /* \320\222\320\275\321\203\321\202\321\200\320\265\320\275\320\275\320\270\320\271 \320\276\321\202\321\201\321\202\321\203\320\277 */\n"
-"    background-color: rgb(224, 224, 224); /* \320\241\320\262\320\265\321\202\320\273\320\276-\321\201\320\265\321\200\321\213\320\271 \321\204\320\276\320\275 */\n"
-"    color: rgb(0, 0, 0);    /* \320\247\320\265\321\200\320\275\321\213\320\271 \321\206\320\262\320\265\321\202 \321\210\321\200\320\270\321\204\321\202\320\260 */\n"
+"background-color: rgb(76, 76, 76);"));
+        answerLenght = new QLineEdit(LenghtClass);
+        answerLenght->setObjectName("answerLenght");
+        answerLenght->setGeometry(QRect(160, 220, 91, 28));
+        QFont font;
+        font.setPointSize(10);
+        answerLenght->setFont(font);
+        answerLenght->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);"));
+        equalsBtn = new QPushButton(LenghtClass);
+        equalsBtn->setObjectName("equalsBtn");
+        equalsBtn->setGeometry(QRect(150, 350, 135, 80));
+        equalsBtn->setMinimumSize(QSize(0, 0));
+        QFont font1;
+        font1.setPointSize(28);
+        equalsBtn->setFont(font1);
+        equalsBtn->setTabletTracking(false);
+        equalsBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color: rgb(246, 147, 51);\n"
+"color: rgb(255, 255, 255);\n"
+"margin: 3px;\n"
 "}\n"
-"\n"
-"/* \320\243\320\261\320\270\321\200\320\260\320\265\320\274 \320\263\321\200\320\260\320\275\320\270\321\206\321\203 \321\203 \320\262\321\213\320\277\320\260\320\264"
-                        "\320\260\321\216\321\211\320\265\320\271 \321\207\320\260\321\201\321\202\320\270 */\n"
-"QComboBox::drop-down {\n"
-"    border: 0px;\n"
-"}\n"
-"\n"
-"/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\262\321\213\320\277\320\260\320\264\320\260\321\216\321\211\320\265\320\263\320\276 \321\201\320\277\320\270\321\201\320\272\320\260 QComboBox */\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #000; /* \320\247\320\265\321\200\320\275\320\260\321\217 \320\263\321\200\320\260\320\275\320\270\321\206\320\260 */\n"
-"    border-radius: 7px;     /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\213\320\265 \321\203\320\263\320\273\321\213 */\n"
-"    background-color: rgb(224, 224, 224); /* \320\241\320\262\320\265\321\202\320\273\320\276-\321\201\320\265\321\200\321\213\320\271 \321\204\320\276\320\275 */\n"
-"    color: rgb(0, 0, 0);    /* \320\247\320\265\321\200\320\275\321\213\320\271 \321\206\320\262\320\265\321\202 \321\210\321"
-                        "\200\320\270\321\204\321\202\320\260 */\n"
-"}\n"
-"\n"
-"/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 \320\262\320\275\321\203\321\202\321\200\320\270 QComboBox */\n"
-"QComboBox QAbstractItemView QScrollBar:vertical {\n"
-"    border: 0px;           /* \320\221\320\265\320\267 \320\263\321\200\320\260\320\275\320\270\321\206 */\n"
-"    background: rgb(240, 240, 240); /* \320\244\320\276\320\275 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
-"    width: 7px;           /* \320\250\320\270\321\200\320\270\320\275\320\260 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
-"    margin: 2px 0 2px 0;   /* \320\236\321\202\321\201\321\202\321\203\320\277\321\213 \321\201\320\262\320\265\321\200\321\205\321\203"
-                        " \320\270 \321\201\320\275\320\270\320\267\321\203 */\n"
-"    border-radius: 20px;    /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\270\320\265 \321\203\320\263\320\273\320\276\320\262 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
-"}\n"
-"\n"
-"/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \321\200\321\203\321\207\320\272\320\270 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 (thumb) */\n"
-"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
-"    background: rgb(180, 180, 180); /* \320\246\320\262\320\265\321\202 \321\200\321\203\321\207\320\272\320\270 */\n"
-"    min-height: 20px;               /* \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\262\321\213\321\201\320\276\321\202\320\260 */\n"
-"    border-radius: 20px;             /"
-                        "* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\270\320\265 \321\203\320\263\320\273\320\276\320\262 \321\200\321\203\321\207\320\272\320\270 */\n"
-"}\n"
-"\n"
-"/* \320\232\320\275\320\276\320\277\320\272\320\270 \320\262\320\262\320\265\321\200\321\205 \320\270 \320\262\320\275\320\270\320\267 \320\275\320\260 \320\277\320\276\320\273\320\276\321\201\320\265 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
-"QComboBox QAbstractItemView QScrollBar::add-line:vertical,\n"
-"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
-"    background: rgb(224, 224, 224); /* \320\244\320\276\320\275 \320\272\320\275\320\276\320\277\320\276\320\272 */\n"
-"    border: 0px;                    /* \320\221\320\265\320\267 \320\263\321\200\320\260\320\275\320\270\321\206 */\n"
-"    height: 10px;                   /* \320\222\321\213\321\201\320\276\321\202\320\260 \320\272\320\275\320\276\320\277\320\276\320\272 */\n"
-"    subcontrol-origin: margin;\n"
-"    bor"
-                        "der-radius: 7px;             /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\270\320\265 \321\203\320\263\320\273\320\276\320\262 \320\272\320\275\320\276\320\277\320\276\320\272 */\n"
-"}\n"
-"\n"
-"/* \320\243\320\261\320\270\321\200\320\260\320\265\320\274 \321\201\321\202\321\200\320\265\320\273\320\272\320\270 \320\275\320\260 \320\272\320\275\320\276\320\277\320\272\320\260\321\205 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
-"QComboBox QAbstractItemView QScrollBar::up-arrow:vertical,\n"
-"QComboBox QAbstractItemView QScrollBar::down-arrow:vertical {\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"/* \320\243\320\261\320\270\321\200\320\260\320\265\320\274 \320\277\321\200\320\276\321\201\321\202\321\200\320\260\320\275\321\201\321\202\320\262\320\276 (\321\201\320\277\321\215\320\271\321\201\320\265\321\200\321\213) \320\262\320\276\320\272\321\200\321\203\320\263 \320\272\320\275\320\276\320\277\320\276\320\272 \320\277\321\200\320\276\320\272\321\200\321"
-                        "\203\321\202\320\272\320\270 */\n"
-"QComboBox QAbstractItemView QScrollBar::add-page:vertical,\n"
-"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}\n"
-""));
+"QPushButton:pressed{\n"
+"background-color:  rgb(118, 118, 118);\n"
+"}"));
         delBtn = new QPushButton(LenghtClass);
         delBtn->setObjectName("delBtn");
         delBtn->setGeometry(QRect(10, 349, 135, 80));
         delBtn->setMinimumSize(QSize(0, 0));
         delBtn->setMaximumSize(QSize(16777215, 16777215));
-        QFont font;
-        font.setPointSize(28);
-        delBtn->setFont(font);
+        delBtn->setFont(font1);
         delBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(224, 224, 224);\n"
 "color: rgb(0, 0, 0);\n"
@@ -126,6 +74,12 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
+        enterLenght = new QLineEdit(LenghtClass);
+        enterLenght->setObjectName("enterLenght");
+        enterLenght->setGeometry(QRect(160, 130, 91, 28));
+        enterLenght->setFont(font);
+        enterLenght->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
+"color: rgb(0, 0, 0);"));
         comboBox = new QComboBox(LenghtClass);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -280,48 +234,89 @@ public:
 "    background: none;\n"
 "}\n"
 ""));
-        equalsBtn = new QPushButton(LenghtClass);
-        equalsBtn->setObjectName("equalsBtn");
-        equalsBtn->setGeometry(QRect(150, 350, 135, 80));
-        equalsBtn->setMinimumSize(QSize(0, 0));
-        equalsBtn->setFont(font);
-        equalsBtn->setTabletTracking(false);
-        equalsBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-color: rgb(246, 147, 51);\n"
-"color: rgb(255, 255, 255);\n"
-"margin: 3px;\n"
+        lenghtComboBox_1 = new QComboBox(LenghtClass);
+        lenghtComboBox_1->addItem(QString());
+        lenghtComboBox_1->addItem(QString());
+        lenghtComboBox_1->addItem(QString());
+        lenghtComboBox_1->addItem(QString());
+        lenghtComboBox_1->setObjectName("lenghtComboBox_1");
+        lenghtComboBox_1->setGeometry(QRect(40, 130, 81, 28));
+        lenghtComboBox_1->setStyleSheet(QString::fromUtf8("/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\276\321\201\320\275\320\276\320\262\320\275\320\276\320\263\320\276 QComboBox */\n"
+"QComboBox {\n"
+"\n"
+"    border-radius: 7px;     /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\213\320\265 \321\203\320\263\320\273\321\213 */\n"
+"         /* \320\222\320\275\321\203\321\202\321\200\320\265\320\275\320\275\320\270\320\271 \320\276\321\202\321\201\321\202\321\203\320\277 */\n"
+"    background-color: rgb(224, 224, 224); /* \320\241\320\262\320\265\321\202\320\273\320\276-\321\201\320\265\321\200\321\213\320\271 \321\204\320\276\320\275 */\n"
+"    color: rgb(0, 0, 0);    /* \320\247\320\265\321\200\320\275\321\213\320\271 \321\206\320\262\320\265\321\202 \321\210\321\200\320\270\321\204\321\202\320\260 */\n"
 "}\n"
-"QPushButton:pressed{\n"
-"background-color:  rgb(118, 118, 118);\n"
-"}"));
-        enterLenght = new QLineEdit(LenghtClass);
-        enterLenght->setObjectName("enterLenght");
-        enterLenght->setGeometry(QRect(160, 130, 91, 28));
-        QFont font1;
-        font1.setPointSize(10);
-        enterLenght->setFont(font1);
-        enterLenght->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
-        answerLenght = new QLineEdit(LenghtClass);
-        answerLenght->setObjectName("answerLenght");
-        answerLenght->setGeometry(QRect(160, 220, 91, 28));
-        answerLenght->setFont(font1);
-        answerLenght->setStyleSheet(QString::fromUtf8("background-color: rgb(224, 224, 224);\n"
-"color: rgb(0, 0, 0);"));
+"\n"
+"/* \320\243\320\261\320\270\321\200\320\260\320\265\320\274 \320\263\321\200\320\260\320\275\320\270\321\206\321\203 \321\203 \320\262\321\213\320\277\320\260\320\264"
+                        "\320\260\321\216\321\211\320\265\320\271 \321\207\320\260\321\201\321\202\320\270 */\n"
+"QComboBox::drop-down {\n"
+"    border: 0px;\n"
+"}\n"
+"\n"
+"/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\262\321\213\320\277\320\260\320\264\320\260\321\216\321\211\320\265\320\263\320\276 \321\201\320\277\320\270\321\201\320\272\320\260 QComboBox */\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 1px solid #000; /* \320\247\320\265\321\200\320\275\320\260\321\217 \320\263\321\200\320\260\320\275\320\270\321\206\320\260 */\n"
+"    border-radius: 7px;     /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\275\321\213\320\265 \321\203\320\263\320\273\321\213 */\n"
+"    background-color: rgb(224, 224, 224); /* \320\241\320\262\320\265\321\202\320\273\320\276-\321\201\320\265\321\200\321\213\320\271 \321\204\320\276\320\275 */\n"
+"    color: rgb(0, 0, 0);    /* \320\247\320\265\321\200\320\275\321\213\320\271 \321\206\320\262\320\265\321\202 \321\210\321"
+                        "\200\320\270\321\204\321\202\320\260 */\n"
+"}\n"
+"\n"
+"/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 \320\262\320\275\321\203\321\202\321\200\320\270 QComboBox */\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"    border: 0px;           /* \320\221\320\265\320\267 \320\263\321\200\320\260\320\275\320\270\321\206 */\n"
+"    background: rgb(240, 240, 240); /* \320\244\320\276\320\275 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
+"    width: 7px;           /* \320\250\320\270\321\200\320\270\320\275\320\260 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
+"    margin: 2px 0 2px 0;   /* \320\236\321\202\321\201\321\202\321\203\320\277\321\213 \321\201\320\262\320\265\321\200\321\205\321\203"
+                        " \320\270 \321\201\320\275\320\270\320\267\321\203 */\n"
+"    border-radius: 20px;    /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\270\320\265 \321\203\320\263\320\273\320\276\320\262 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
+"}\n"
+"\n"
+"/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \321\200\321\203\321\207\320\272\320\270 \320\277\320\276\320\273\320\276\321\201\321\213 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 (thumb) */\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"    background: rgb(180, 180, 180); /* \320\246\320\262\320\265\321\202 \321\200\321\203\321\207\320\272\320\270 */\n"
+"    min-height: 20px;               /* \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\262\321\213\321\201\320\276\321\202\320\260 */\n"
+"    border-radius: 20px;             /"
+                        "* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\270\320\265 \321\203\320\263\320\273\320\276\320\262 \321\200\321\203\321\207\320\272\320\270 */\n"
+"}\n"
+"\n"
+"/* \320\232\320\275\320\276\320\277\320\272\320\270 \320\262\320\262\320\265\321\200\321\205 \320\270 \320\262\320\275\320\270\320\267 \320\275\320\260 \320\277\320\276\320\273\320\276\321\201\320\265 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical,\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: rgb(224, 224, 224); /* \320\244\320\276\320\275 \320\272\320\275\320\276\320\277\320\276\320\272 */\n"
+"    border: 0px;                    /* \320\221\320\265\320\267 \320\263\321\200\320\260\320\275\320\270\321\206 */\n"
+"    height: 10px;                   /* \320\222\321\213\321\201\320\276\321\202\320\260 \320\272\320\275\320\276\320\277\320\276\320\272 */\n"
+"    subcontrol-origin: margin;\n"
+"    bor"
+                        "der-radius: 7px;             /* \320\227\320\260\320\272\321\200\321\203\320\263\320\273\320\265\320\275\320\270\320\265 \321\203\320\263\320\273\320\276\320\262 \320\272\320\275\320\276\320\277\320\276\320\272 */\n"
+"}\n"
+"\n"
+"/* \320\243\320\261\320\270\321\200\320\260\320\265\320\274 \321\201\321\202\321\200\320\265\320\273\320\272\320\270 \320\275\320\260 \320\272\320\275\320\276\320\277\320\272\320\260\321\205 \320\277\321\200\320\276\320\272\321\200\321\203\321\202\320\272\320\270 */\n"
+"QComboBox QAbstractItemView QScrollBar::up-arrow:vertical,\n"
+"QComboBox QAbstractItemView QScrollBar::down-arrow:vertical {\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"/* \320\243\320\261\320\270\321\200\320\260\320\265\320\274 \320\277\321\200\320\276\321\201\321\202\321\200\320\260\320\275\321\201\321\202\320\262\320\276 (\321\201\320\277\321\215\320\271\321\201\320\265\321\200\321\213) \320\262\320\276\320\272\321\200\321\203\320\263 \320\272\320\275\320\276\320\277\320\276\320\272 \320\277\321\200\320\276\320\272\321\200\321"
+                        "\203\321\202\320\272\320\270 */\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical,\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+""));
 
         retranslateUi(LenghtClass);
 
         QMetaObject::connectSlotsByName(LenghtClass);
     } // setupUi
 
-    void retranslateUi(QDialog *LenghtClass)
+    void retranslateUi(QWidget *LenghtClass)
     {
-        LenghtClass->setWindowTitle(QCoreApplication::translate("LenghtClass", "Dialog", nullptr));
-        lenghtComboBox_1->setItemText(0, QCoreApplication::translate("LenghtClass", "\320\272\320\274", nullptr));
-        lenghtComboBox_1->setItemText(1, QCoreApplication::translate("LenghtClass", "\320\274", nullptr));
-        lenghtComboBox_1->setItemText(2, QCoreApplication::translate("LenghtClass", "\321\201\320\274", nullptr));
-        lenghtComboBox_1->setItemText(3, QCoreApplication::translate("LenghtClass", "\320\274\320\274", nullptr));
-
+        LenghtClass->setWindowTitle(QCoreApplication::translate("LenghtClass", "Form", nullptr));
+        equalsBtn->setText(QCoreApplication::translate("LenghtClass", "=", nullptr));
         delBtn->setText(QCoreApplication::translate("LenghtClass", "AC", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("LenghtClass", "\320\224\320\273\320\270\320\275\320\260", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("LenghtClass", "\320\241\320\272\320\276\321\200\320\276\321\201\321\202\321\214", nullptr));
@@ -341,7 +336,11 @@ public:
         lenghtComboBox_2->setItemText(2, QCoreApplication::translate("LenghtClass", "\321\201\320\274", nullptr));
         lenghtComboBox_2->setItemText(3, QCoreApplication::translate("LenghtClass", "\320\274\320\274", nullptr));
 
-        equalsBtn->setText(QCoreApplication::translate("LenghtClass", "=", nullptr));
+        lenghtComboBox_1->setItemText(0, QCoreApplication::translate("LenghtClass", "\320\272\320\274", nullptr));
+        lenghtComboBox_1->setItemText(1, QCoreApplication::translate("LenghtClass", "\320\274", nullptr));
+        lenghtComboBox_1->setItemText(2, QCoreApplication::translate("LenghtClass", "\321\201\320\274", nullptr));
+        lenghtComboBox_1->setItemText(3, QCoreApplication::translate("LenghtClass", "\320\274\320\274", nullptr));
+
     } // retranslateUi
 
 };
