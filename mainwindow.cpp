@@ -110,6 +110,10 @@ void MainWindow::on_equalsBtn_clicked() {
         new_label = QString::number(labelNumber, 'g', 15);
 
         ui->result->setText(new_label);
+
+        ui -> lastResult->setText(QString::number(num_first) + QString(" + ") +
+                                  QString::number(num_second) + QString(" = ")
+                                + new_label);
         ui->plusBtn->setChecked(false);
     }
     else if(ui->minusBtn->isChecked()){
@@ -117,6 +121,9 @@ void MainWindow::on_equalsBtn_clicked() {
         new_label = QString::number(labelNumber, 'g', 15);
 
         ui->result->setText(new_label);
+        ui -> lastResult->setText(QString::number(num_first) + QString(" - ") +
+                                QString::number(num_second) + QString(" = ")
+                                + new_label);
         ui->minusBtn->setChecked(false);
     }
     else if(ui->multBtn->isChecked()){
@@ -124,6 +131,9 @@ void MainWindow::on_equalsBtn_clicked() {
         new_label = QString::number(labelNumber, 'g', 15);
 
         ui->result->setText(new_label);
+        ui -> lastResult->setText(QString::number(num_first) + QString(" * ") +
+                                QString::number(num_second) + QString(" = ")
+                                + new_label);
         ui->multBtn->setChecked(false);
     }
     else if(ui->divisBtn->isChecked()){
@@ -135,6 +145,9 @@ void MainWindow::on_equalsBtn_clicked() {
             new_label = QString::number(labelNumber, 'g', 15);
 
             ui->result->setText(new_label);
+            ui -> lastResult->setText(QString::number(num_first) + QString(" / ") +
+                                    QString::number(num_second) + QString(" = ")
+                                    + new_label);
             ui->divisBtn->setChecked(false);
         }
     }

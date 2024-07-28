@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -24,7 +23,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QGridLayout *gridLayout;
     QLabel *result;
     QPushButton *delBtn;
     QPushButton *reversBtn;
@@ -46,6 +44,7 @@ public:
     QPushButton *commaBtn;
     QPushButton *equalsBtn;
     QComboBox *comboBox;
+    QLabel *lastResult;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -59,22 +58,20 @@ public:
 ""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        gridLayout = new QGridLayout(centralwidget);
-        gridLayout->setObjectName("gridLayout");
         result = new QLabel(centralwidget);
         result->setObjectName("result");
+        result->setGeometry(QRect(11, 40, 271, 61));
         result->setMinimumSize(QSize(267, 61));
         result->setMaximumSize(QSize(200000, 80));
         QFont font;
         font.setPointSize(28);
         result->setFont(font);
         result->setStyleSheet(QString::fromUtf8("background-color: rgb(76, 76, 76);\n"
-"color: rgb(255, 255, 255)"));
-
-        gridLayout->addWidget(result, 1, 0, 1, 4);
-
+"color: rgb(255, 255, 255);\n"
+"size: 30px;"));
         delBtn = new QPushButton(centralwidget);
         delBtn->setObjectName("delBtn");
+        delBtn->setGeometry(QRect(11, 105, 70, 60));
         delBtn->setMinimumSize(QSize(70, 60));
         delBtn->setMaximumSize(QSize(16777215, 16777215));
         delBtn->setFont(font);
@@ -86,11 +83,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(delBtn, 2, 0, 1, 1);
-
         reversBtn = new QPushButton(centralwidget);
         reversBtn->setObjectName("reversBtn");
+        reversBtn->setGeometry(QRect(80, 105, 70, 60));
         reversBtn->setMinimumSize(QSize(70, 60));
         reversBtn->setFont(font);
         reversBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -101,11 +96,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(reversBtn, 2, 1, 1, 1);
-
         procentBtn = new QPushButton(centralwidget);
         procentBtn->setObjectName("procentBtn");
+        procentBtn->setGeometry(QRect(149, 105, 70, 60));
         procentBtn->setMinimumSize(QSize(70, 60));
         procentBtn->setFont(font);
         procentBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -116,11 +109,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(procentBtn, 2, 2, 1, 1);
-
         divisBtn = new QPushButton(centralwidget);
         divisBtn->setObjectName("divisBtn");
+        divisBtn->setGeometry(QRect(218, 105, 70, 60));
         divisBtn->setMinimumSize(QSize(70, 60));
         divisBtn->setFont(font);
         divisBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -131,11 +122,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(divisBtn, 2, 3, 1, 1);
-
         btn7 = new QPushButton(centralwidget);
         btn7->setObjectName("btn7");
+        btn7->setGeometry(QRect(11, 170, 70, 60));
         btn7->setMinimumSize(QSize(70, 60));
         btn7->setFont(font);
         btn7->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -146,11 +135,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn7, 3, 0, 1, 1);
-
         btn8 = new QPushButton(centralwidget);
         btn8->setObjectName("btn8");
+        btn8->setGeometry(QRect(80, 170, 70, 60));
         btn8->setMinimumSize(QSize(70, 60));
         btn8->setFont(font);
         btn8->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -161,11 +148,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn8, 3, 1, 1, 1);
-
         btn9 = new QPushButton(centralwidget);
         btn9->setObjectName("btn9");
+        btn9->setGeometry(QRect(149, 170, 70, 60));
         btn9->setMinimumSize(QSize(70, 60));
         btn9->setFont(font);
         btn9->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -176,11 +161,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn9, 3, 2, 1, 1);
-
         multBtn = new QPushButton(centralwidget);
         multBtn->setObjectName("multBtn");
+        multBtn->setGeometry(QRect(218, 170, 70, 60));
         multBtn->setMinimumSize(QSize(70, 60));
         multBtn->setFont(font);
         multBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -191,11 +174,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(multBtn, 3, 3, 1, 1);
-
         btn4 = new QPushButton(centralwidget);
         btn4->setObjectName("btn4");
+        btn4->setGeometry(QRect(11, 235, 70, 60));
         btn4->setMinimumSize(QSize(70, 60));
         btn4->setFont(font);
         btn4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -206,11 +187,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn4, 4, 0, 1, 1);
-
         btn5 = new QPushButton(centralwidget);
         btn5->setObjectName("btn5");
+        btn5->setGeometry(QRect(80, 235, 70, 60));
         btn5->setMinimumSize(QSize(70, 60));
         btn5->setFont(font);
         btn5->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -221,11 +200,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn5, 4, 1, 1, 1);
-
         btn6 = new QPushButton(centralwidget);
         btn6->setObjectName("btn6");
+        btn6->setGeometry(QRect(149, 235, 70, 60));
         btn6->setMinimumSize(QSize(70, 60));
         btn6->setFont(font);
         btn6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -236,11 +213,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn6, 4, 2, 1, 1);
-
         minusBtn = new QPushButton(centralwidget);
         minusBtn->setObjectName("minusBtn");
+        minusBtn->setGeometry(QRect(218, 235, 70, 60));
         minusBtn->setMinimumSize(QSize(70, 60));
         minusBtn->setFont(font);
         minusBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -251,11 +226,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(minusBtn, 4, 3, 1, 1);
-
         btn1 = new QPushButton(centralwidget);
         btn1->setObjectName("btn1");
+        btn1->setGeometry(QRect(11, 300, 70, 60));
         btn1->setMinimumSize(QSize(70, 60));
         btn1->setFont(font);
         btn1->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -266,11 +239,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn1, 5, 0, 1, 1);
-
         btn2 = new QPushButton(centralwidget);
         btn2->setObjectName("btn2");
+        btn2->setGeometry(QRect(80, 300, 70, 60));
         btn2->setMinimumSize(QSize(70, 60));
         btn2->setFont(font);
         btn2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -281,12 +252,10 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn2, 5, 1, 1, 1);
-
         btn3 = new QPushButton(centralwidget);
         btn3->setObjectName("btn3");
         btn3->setEnabled(true);
+        btn3->setGeometry(QRect(149, 300, 70, 60));
         btn3->setMinimumSize(QSize(70, 60));
         btn3->setFont(font);
         btn3->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -297,11 +266,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(btn3, 5, 2, 1, 1);
-
         plusBtn = new QPushButton(centralwidget);
         plusBtn->setObjectName("plusBtn");
+        plusBtn->setGeometry(QRect(218, 300, 70, 60));
         plusBtn->setMinimumSize(QSize(70, 60));
         plusBtn->setFont(font);
         plusBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -312,11 +279,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(plusBtn, 5, 3, 1, 1);
-
         btn0 = new QPushButton(centralwidget);
         btn0->setObjectName("btn0");
+        btn0->setGeometry(QRect(11, 365, 135, 60));
         btn0->setMinimumSize(QSize(135, 60));
         btn0->setFont(font);
         btn0->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -328,11 +293,9 @@ public:
 "background-color:  rgb(118, 118, 118);\n"
 "}\n"
 ""));
-
-        gridLayout->addWidget(btn0, 6, 0, 1, 2);
-
         commaBtn = new QPushButton(centralwidget);
         commaBtn->setObjectName("commaBtn");
+        commaBtn->setGeometry(QRect(149, 365, 70, 60));
         commaBtn->setMinimumSize(QSize(70, 60));
         commaBtn->setFont(font);
         commaBtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -343,11 +306,9 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(commaBtn, 6, 2, 1, 1);
-
         equalsBtn = new QPushButton(centralwidget);
         equalsBtn->setObjectName("equalsBtn");
+        equalsBtn->setGeometry(QRect(218, 365, 70, 60));
         equalsBtn->setMinimumSize(QSize(70, 60));
         equalsBtn->setFont(font);
         equalsBtn->setTabletTracking(false);
@@ -359,9 +320,6 @@ public:
 "QPushButton:pressed{\n"
 "background-color:  rgb(118, 118, 118);\n"
 "}"));
-
-        gridLayout->addWidget(equalsBtn, 6, 3, 1, 1);
-
         comboBox = new QComboBox(centralwidget);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -376,6 +334,7 @@ public:
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->setObjectName("comboBox");
+        comboBox->setGeometry(QRect(160, 10, 120, 22));
         comboBox->setStyleSheet(QString::fromUtf8("/* \320\241\321\202\320\270\320\273\320\270\320\267\320\260\321\206\320\270\321\217 \320\276\321\201\320\275\320\276\320\262\320\275\320\276\320\263\320\276 QComboBox */\n"
 "QComboBox {\n"
 "\n"
@@ -442,9 +401,12 @@ public:
 "    background: none;\n"
 "}\n"
 ""));
-
-        gridLayout->addWidget(comboBox, 0, 2, 1, 2);
-
+        lastResult = new QLabel(centralwidget);
+        lastResult->setObjectName("lastResult");
+        lastResult->setGeometry(QRect(10, 10, 140, 30));
+        QFont font1;
+        font1.setPointSize(12);
+        lastResult->setFont(font1);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -488,6 +450,7 @@ public:
         comboBox->setItemText(10, QCoreApplication::translate("MainWindow", "\320\242\320\265\320\274\320\277\320\265\321\200\320\260\321\202\321\203\321\200\320\260", nullptr));
         comboBox->setItemText(11, QCoreApplication::translate("MainWindow", "\320\244\320\270\320\275\320\260\320\275\321\201\321\213", nullptr));
 
+        lastResult->setText(QString());
     } // retranslateUi
 
 };
