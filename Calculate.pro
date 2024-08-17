@@ -11,7 +11,8 @@ CONFIG += c++17
 SOURCES += \
     bmiclass.cpp \
     dataclass.cpp \
-    discount.cpp \
+    discountclass.cpp \
+    history.cpp \
     lenghtclass.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,7 +21,8 @@ SOURCES += \
 HEADERS += \
     bmiclass.h \
     dataclass.h \
-    discount.h \
+    discountclass.h \
+    history.h \
     lenghtclass.h \
     mainwindow.h \
     speedclass.h
@@ -28,7 +30,8 @@ HEADERS += \
 FORMS += \
     bmiclass.ui \
     dataclass.ui \
-    discount.ui \
+    discountclass.ui \
+    history.ui \
     lenghtclass.ui \
     mainwindow.ui \
     speedclass.ui

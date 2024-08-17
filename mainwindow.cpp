@@ -1,17 +1,25 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QKeyEvent>
+#include <QFile>
 #include "bmiclass.h"
 #include "dataclass.h"
 #include "lenghtclass.h"
 #include "discountclass.h"
 #include "speedclass.h"
+#include "history.h"
+#include <QMessageBox>
+#include <QTextStream>
+#include <QStandardPaths>
+#include <QListWidgetItem>
 
 double num_first;
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+    history(new History(this))
 {
     ui->setupUi(this);
 
@@ -32,18 +40,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->multBtn, SIGNAL(clicked()), this, SLOT(math_operations()));
     connect(ui->divisBtn, SIGNAL(clicked()), this, SLOT(math_operations()));
 
+
     ui->plusBtn->setCheckable(true);
     ui->minusBtn->setCheckable(true);
     ui->multBtn->setCheckable(true);
     ui->divisBtn->setCheckable(true);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
+
 void MainWindow::digits_numbers(){
+
     QPushButton *button = (QPushButton *) sender();
     double all_numbers;
     QString new_label;
@@ -55,6 +68,7 @@ void MainWindow::digits_numbers(){
         new_label = QString::number(all_numbers, 'g', 15);
     }
     ui->result->setText(new_label);
+
 }
 
 void MainWindow::on_commaBtn_clicked(){
@@ -83,10 +97,12 @@ void MainWindow::operations(){
 }
 
 void MainWindow::math_operations() {
+
     QPushButton *button = (QPushButton *) sender();
 
     num_first = ui->result->text().toDouble();
     ui->result->setText("");
+
 
     button->setChecked(true);
 }
@@ -103,18 +119,18 @@ void MainWindow::on_delBtn_clicked() {
 
 void MainWindow::on_equalsBtn_clicked() {
     double labelNumber, num_second;
+    QString expression = ui->result->text();
     QString new_label;
     num_second = ui->result->text().toDouble();
     if(ui->plusBtn->isChecked()){
         labelNumber = num_first + num_second;
         new_label = QString::number(labelNumber, 'g', 15);
-
         ui->result->setText(new_label);
-
         ui -> lastResult->setText(QString::number(num_first) + QString(" + ") +
                                   QString::number(num_second) + QString(" = ")
                                 + new_label);
         ui->plusBtn->setChecked(false);
+
     }
     else if(ui->minusBtn->isChecked()){
         labelNumber = num_first - num_second;
@@ -151,6 +167,7 @@ void MainWindow::on_equalsBtn_clicked() {
             ui->divisBtn->setChecked(false);
         }
     }
+    historyWidget.addToListWidget(ui->lastResult->text());
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
@@ -234,6 +251,13 @@ void MainWindow::on_comboBox_activated(int index) {
         break;
     }
   }
+
+}
+
+
+void MainWindow::on_historiBtn_clicked() {
+    historyWidget.show();
+
 
 }
 

@@ -2,12 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include"history.h"
+#include <QStandardPaths>
 
 class DataClass;
 class LenghtClass;
 class BmiClass;
 class DiscountClass;
 class SpeedClass;
+//class History;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,6 +26,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private:
     Ui::MainWindow *ui;
     double intermediate_result;
@@ -33,6 +37,8 @@ private:
     BmiClass *bmiWidget;
     DiscountClass *discountWidget;
     SpeedClass *speedWidget;
+    History historyWidget;
+    History history;
 
 private slots:
     void digits_numbers();
@@ -43,6 +49,6 @@ private slots:
     void math_operations();
     void keyPressEvent(QKeyEvent *event);
     void on_comboBox_activated(int index);
-
+    void on_historiBtn_clicked();
 };
 #endif // MAINWINDOW_H
