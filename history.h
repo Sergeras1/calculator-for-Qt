@@ -24,6 +24,7 @@ private slots:
 private:
     Ui::History *ui;
     QString path = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "\\result.txt";
+    void saveFile(const QString &str);
 };
 
 #endif // HISTORY_H

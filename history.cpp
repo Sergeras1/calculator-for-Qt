@@ -2,7 +2,7 @@
 #include "ui_history.h"
 #include <QListWidget>
 #include <QFile>
-#include <QMessageBox>>
+#include <QMessageBox>
 
 History::History(QWidget *parent)
     : QDialog(parent)
@@ -27,27 +27,24 @@ History::History(QWidget *parent)
 
 History::~History()
 {
-    delete ui;
-
-    QFile file(path);
-
-    if(!file.open(QIODevice::ReadWrite)){
-        QMessageBox::information(0, "Error", file.errorString());
-    }
-
-    QTextStream out (&file);
-
-    for(int i = 0; i < ui->listWidget->count(); i++){
-        out << ui->listWidget->item(i)->text() << "\n";
-    }
-
-    file.close();
+    ///
 }
 
+void History::saveFile(const QString &str){
+    QFile file (path);
+    if(file.open(QIODevice::Append | QIODevice::Text)){
+        QTextStream out (&file);
+        out << str << "\n";
+    }
+}
 void History::addToListWidget(const QString text) {
-    QListWidgetItem *item = new QListWidgetItem(text, ui->listWidget);
-    ui->listWidget->addItem(item);
-    item->setFlags(item->flags() | Qt::ItemIsEditable);
+
+    QString str = text;
+    if(!str.isEmpty()){
+        ui->listWidget->addItem(str);
+        saveFile(str);
+
+    }
 }
 
 
@@ -56,5 +53,9 @@ void History::addToListWidget(const QString text) {
 void History::on_btnRemoveAdd_clicked() {
 
     ui->listWidget->clear();
+    QFile file(path);
+    if(file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        file.resize(0);
+        file.close();
+    }
 }
-
